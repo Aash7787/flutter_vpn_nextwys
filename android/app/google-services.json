@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "268279654932",
+    "project_id": "vpnnextways",
+    "storage_bucket": "vpnnextways.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268279654932:android:1f0abdadba900fcc8a5501",
+        "android_client_info": {
+          "package_name": "com.example.flutter_vpn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpuWsQ1j1n_cmGU868Gq1185PrWmV7sFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
