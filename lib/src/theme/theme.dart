@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class AppTheme {
   AppTheme._();
 
@@ -27,7 +28,18 @@ class AppTheme {
   }
 
   static final ColorScheme colorSchemeLight = ColorScheme.fromSeed(
-    seedColor: Colors.blue,
+    seedColor: Colors.transparent,
+    primary: Color.fromARGB(255, 255, 72, 72),
+    onPrimary: Colors.white,
+    secondary: Color(0xffFFE6A7),
+    onSecondary: Color(0xff222222),
+    error: Colors.red,
+    onError: Colors.white,
+    surface: Colors.white,
+    onSurface: Color(0xff222222),
+    outline: Color(0xffD9D9D9),
+    outlineVariant: Color.fromRGBO(247, 249, 249, 1),
+
     brightness: Brightness.light,
   );
 

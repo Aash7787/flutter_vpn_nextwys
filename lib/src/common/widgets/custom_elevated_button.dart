@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vpn/src/common/const/global_variable.dart';
+import 'package:flutter_vpn/src/common/const/global_variable.dart' as AppTheme;
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -52,8 +53,8 @@ class CustomElevatedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(45),
           padding: EdgeInsets.zero,
-          backgroundColor:
-              backgroundColor ?? colorScheme(context).primaryContainer,
+          backgroundColor:  
+              backgroundColor ?? AppTheme.colorScheme(context).primaryContainer,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 6),
           ),

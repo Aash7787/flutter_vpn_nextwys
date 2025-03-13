@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,6 +9,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text(route)));
+    return Scaffold(
+      appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            AuthController().logout(context);
+          },
+          child: Icon(Icons.logout),
+        ),
+      ),
+      body: Center(child: Text("Hellow World")),
+    );
   }
 }

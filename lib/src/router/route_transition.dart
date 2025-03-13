@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-PageRoute<T> buildPageWithDefaultTransition<T>({
+CustomTransitionPage buildPageWithDefaultTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
   required Widget child,
 }) {
-  return MaterialPageRoute<T>(
-    builder: (context) => child,
-  );
-}
-
-PageRoute<T> buildPageWithSlideTransition<T>({
-  required Widget child,
-}) {
-  return PageRouteBuilder<T>(
-    pageBuilder: (context, animation, secondaryAnimation) => child,
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) =>
         SlideTransition(
       position: Tween<Offset>(
@@ -24,11 +20,14 @@ PageRoute<T> buildPageWithSlideTransition<T>({
   );
 }
 
-PageRoute<T> buildPageWithFadeTransition<T>({
+CustomTransitionPage buildPageWithFadeTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
   required Widget child,
 }) {
-  return PageRouteBuilder<T>(
-    pageBuilder: (context, animation, secondaryAnimation) => child,
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) =>
         FadeTransition(
       opacity: animation,
@@ -36,4 +35,3 @@ PageRoute<T> buildPageWithFadeTransition<T>({
     ),
   );
 }
-

@@ -12,7 +12,20 @@
           "package_name": "com.example.flutter_vpn"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "268279654932-kh8f5evpseogk823f4s02p234i1s480m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_vpn",
+            "certificate_hash": "5662f6b45aa538021eba2951cb174914c7a3f73c"
+          }
+        },
+        {
+          "client_id": "268279654932-61j002v6fabh2vua80c5noo8ibl6q2h6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCpuWsQ1j1n_cmGU868Gq1185PrWmV7sFM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268279654932-61j002v6fabh2vua80c5noo8ibl6q2h6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "268279654932-aprbj4f1eundmreqk1i4j1o5b4vqkqve.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterVpn"
+              }
+            }
+          ]
         }
       }
     }
