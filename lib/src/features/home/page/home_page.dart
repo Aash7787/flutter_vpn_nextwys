@@ -11,55 +11,121 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   String selectedCountry = "France";
+    bool isConnected = false; 
   @override
   Widget build(BuildContext context) {
       return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("SuperVPN"),
+        title: Text("SuperVPN",style:TextStyle(color: Colors.white,fontWeight: FontWeight.w300),),
         actions: [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/france.png"), // Replace with actual flag asset
-            ),
-          ),
+          Image.asset("assets/images/crown.png",height: 35,),
+        Padding(
+  padding: EdgeInsets.all(8.0),
+  child: CircleAvatar(backgroundImage: AssetImage("assets/images/france.png"),
+    backgroundColor: Colors.white,
+    radius: 15, 
+ 
+  ),
+)
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        drawer: Drawer(
+        child: Column(
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+            // Drawer Header
+            Container(
+              width: double.infinity,
+              color: Colors.blue,
+              padding: EdgeInsets.only(top: 40, bottom: 20),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person, size: 40, color: Colors.blue),
+                  ),
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      // Handle Google Sign-In
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.network(
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png",
+                            height: 20,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "Sign in",
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                        ListTile(
+              title: Text(
+                "Unstable connection? Click here",
+                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              onTap: () {},
+            ),
+                ],
               ),
             ),
+
+           
+            Divider(),
+
+            // Menu Items
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: Icon(Icons.bolt, color: Colors.blue),
+              title: Text("Smart proxy", style: TextStyle(fontSize: 16)),
               onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.info),
-              title: Text('About'),
+              leading: Icon(Icons.share, color: Colors.blue),
+              title: Text("Share", style: TextStyle(fontSize: 16)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.star, color: Colors.blue),
+              title: Text("Rate us", style: TextStyle(fontSize: 16)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.question_answer, color: Colors.blue),
+              title: Text("FAQ", style: TextStyle(fontSize: 16)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings, color: Colors.blue),
+              title: Text("Setting", style: TextStyle(fontSize: 16)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.info, color: Colors.blue),
+              title: Text("About", style: TextStyle(fontSize: 16)),
               onTap: () {},
             ),
           ],
         ),
       ),
+   
       body: Column(
         children: [
           Container(
             color: Colors.orange,
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(5),
             child: Center(
               child: Text(
                 "We provide free VPN service to Apple devices now.\nPlease visit www.supervpn.best to download",
@@ -68,50 +134,96 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: DropdownButton<String>(
-                    value: selectedCountry,
-                    items: ["France", "USA", "Germany"].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Row(
-                          children: [
-                            Icon(Icons.flag), // Replace with actual flag icons
-                            SizedBox(width: 8),
-                            Text(value),
-                          ],
+          SizedBox(height: 18,),
+          Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(side: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 60),
+                    child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 17, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(25), // Rounded border
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CircleAvatar(
+                                radius: 12, // Small flag size
+                                backgroundImage: AssetImage("assets/images/france.png"), // Ensure image is added in pubspec.yaml
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                "France",
+                                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(width: 8),
+                              Icon(Icons.arrow_drop_down, color: Colors.white),
+                            ],
+                          ),
                         ),
-                      );
-                    }).toList(),
-                    onChanged: (newValue) {
-                      setState(() {
-                        selectedCountry = newValue!;
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text("Ready", style: TextStyle(color: Colors.orange, fontSize: 18)),
-                SizedBox(height: 10),
-                Container(
-                  height: 120,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.grey, width: 5),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "CONNECT",
-                      style: TextStyle(color: Colors.blue, fontSize: 18),
+                  )
+                    
+                      ],
                     ),
-                  ),
-                ),
+                SizedBox(height: 20),
+                Text("Ready", style: TextStyle(color: Colors.deepOrange, fontSize: 18)),
+                SizedBox(height: 10),
+                 GestureDetector(
+      onTap: () {
+        setState(() {
+          isConnected = !isConnected; // Toggle state
+        });
+      },
+      child: Container(
+        height: 170,
+        width: 170,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isConnected ? Colors.red : Colors.green, // Change color
+            width: 15,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            isConnected ? "DISCONNECT" : "CONNECT",
+            style: TextStyle(
+              color: isConnected ? Colors.red : Colors.blue, // Text color change
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+                 ),
+                // Container(
+                //   height: 170,
+                //   width: 170,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     border: Border.all(color: Colors.grey, width: 15,),
+                //   ),
+                //   child: Center(
+                //     child: Text(
+                //       "CONNECT",
+                //       style: TextStyle(color: Colors.blue, fontSize: 18,fontWeight: FontWeight.bold),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 10),
                 Text("Free", style: TextStyle(color: Colors.blue, fontSize: 16)),
               ],
@@ -130,9 +242,9 @@ class _HomePageState extends State<HomePage> {
           //     ],
           //   ),
           // ),
-        ],
+         ) ],
       ),
-    );
+    )]));
   }
 }
 
