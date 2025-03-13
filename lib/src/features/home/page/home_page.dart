@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
               ), // Replace with actual flag asset
             ),
           ),
+          Image.asset("assets/images/crown.png", height: 35),
         ],
       ),
       drawer: DrawerC(),
