@@ -101,19 +101,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          // Container(
-          //   padding: EdgeInsets.all(10),
-          //   child: Column(
-          //     children: [
-          //       Image.network("https://via.placeholder.com/300x100"), // Replace with actual ad image
-          //       SizedBox(height: 5),
-          //       ElevatedButton(
-          //         onPressed: () {},
-          //         child: Text("Install"),
-          //       ),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
     );
