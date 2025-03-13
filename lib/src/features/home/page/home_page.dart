@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               color: Colors.blue,
               padding: EdgeInsets.only(top: 40, bottom: 20),
-              child: Column(
+              child:Row(
                 children: [
                   CircleAvatar(
                     radius: 30,
@@ -59,8 +59,8 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Image.network(
-                            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png",
+                          Image.asset(
+                        "assets/images/google.jpg",
                             height: 20,
                           ),
                           SizedBox(width: 5),
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                         ListTile(
               title: Text(
                 "Unstable connection? Click here",
-                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               onTap: () {},
             ),
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
            
-            Divider(),
+      
 
             // Menu Items
             ListTile(
