@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vpn/src/features/home/widgets/drawer_c.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-    static const route = 'home/page';
+  static const route = 'home/page';
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
   String selectedCountry = "France";
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text("SuperVPN"),
@@ -21,40 +21,14 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/france.png"), // Replace with actual flag asset
+              backgroundImage: AssetImage(
+                "assets/images/france.png",
+              ), // Replace with actual flag asset
             ),
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text('About'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
+      drawer: DrawerC(),
       body: Column(
         children: [
           Container(
@@ -76,18 +50,21 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.all(10),
                   child: DropdownButton<String>(
                     value: selectedCountry,
-                    items: ["France", "USA", "Germany"].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Row(
-                          children: [
-                            Icon(Icons.flag), // Replace with actual flag icons
-                            SizedBox(width: 8),
-                            Text(value),
-                          ],
-                        ),
-                      );
-                    }).toList(),
+                    items:
+                        ["France", "USA", "Germany"].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.flag,
+                                ), // Replace with actual flag icons
+                                SizedBox(width: 8),
+                                Text(value),
+                              ],
+                            ),
+                          );
+                        }).toList(),
                     onChanged: (newValue) {
                       setState(() {
                         selectedCountry = newValue!;
@@ -96,7 +73,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text("Ready", style: TextStyle(color: Colors.orange, fontSize: 18)),
+                Text(
+                  "Ready",
+                  style: TextStyle(color: Colors.orange, fontSize: 18),
+                ),
                 SizedBox(height: 10),
                 Container(
                   height: 120,
@@ -113,7 +93,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 10),
-                Text("Free", style: TextStyle(color: Colors.blue, fontSize: 16)),
+                Text(
+                  "Free",
+                  style: TextStyle(color: Colors.blue, fontSize: 16),
+                ),
               ],
             ),
           ),
@@ -135,5 +118,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
