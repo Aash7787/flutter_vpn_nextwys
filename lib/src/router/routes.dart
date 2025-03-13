@@ -5,7 +5,9 @@ import 'package:flutter_vpn/src/router/route_transition.dart';
 
 Route<dynamic> onGenRoute(RouteSettings settings) {
   return switch (settings.name) {
+    // HomePage.route => buildPageWithSlideTransition(child: HomePage()),
     HomePage.route => buildPageWithSlideTransition(child: HomePage()),
+    
 
     _ => buildPageWithDefaultTransition(child: ErrorPage()),
   };
