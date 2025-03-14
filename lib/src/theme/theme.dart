@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class AppTheme {
   AppTheme._();
 
@@ -13,7 +14,10 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.light,
       colorScheme: colorSchemeLight,
-      textTheme: textTheme,
+      textTheme: textTheme.apply(
+        bodyColor: Colors.black, // Change overall body text color
+        displayColor: Colors.black, // Change headings and display text color
+      ),
     );
   }
 
@@ -22,7 +26,10 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.dark,
       colorScheme: colorSchemeDark,
-      textTheme: textTheme,
+      textTheme: textTheme.apply(
+        bodyColor: Colors.white, // Change overall body text color
+        displayColor: Colors.white, // Change headings and display text color
+      ),
     );
   }
 
