@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,6 +16,17 @@ class _HomePageState extends State<HomePage> {
     bool isConnected = false; 
   @override
   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         leading: GestureDetector(
+//           onTap: () {
+//             AuthController().logout(context);
+//           },
+//           child: Icon(Icons.logout),
+//         ),
+//       ),
+//       body: Center(child: Text("Hellow World")),
+//     );
       return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -245,6 +258,7 @@ class _HomePageState extends State<HomePage> {
          ) ],
       ),
     )]));
+// >>>>>>> master
   }
 }
 
