@@ -4,85 +4,20 @@ import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/sign_up_screen.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/splash_screen.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
-import 'package:flutter_vpn/src/router/route_transition.dart'
-    show buildPageWithFadeTransition;
-import 'package:go_router/go_router.dart';
+import 'package:flutter_vpn/src/features/home/page/about_page.dart';
+import 'package:flutter_vpn/src/features/home/page/setting_page.dart';
+import 'package:flutter_vpn/src/router/error_route.dart';
+import 'package:flutter_vpn/src/router/route_transition.dart';
 
-import 'error_route.dart';
-
-class MyAppRouter {
-  static final router = GoRouter(
-    initialLocation: '/${AppRoute.splashScreen}',
-    routes: [
-      GoRoute(
-        name: AppRoute.signupScreen,
-        path: '/${AppRoute.signupScreen}',
-        pageBuilder:
-            (context, state) => buildPageWithFadeTransition<void>(
-              context: context,
-              state: state,
-              child: const SignUpScreen(),
-            ),
-      ),
-      GoRoute(
-        name: AppRoute.loginScreen,
-        path: '/${AppRoute.loginScreen}',
-        pageBuilder:
-            (context, state) => buildPageWithFadeTransition<void>(
-              context: context,
-              state: state,
-              child: const LoginScreen(),
-            ),
-      ),
-      GoRoute(
-        name: AppRoute.forgotpasswordScreen,
-        path: '/${AppRoute.forgotpasswordScreen}',
-        pageBuilder:
-            (context, state) => buildPageWithFadeTransition<void>(
-              context: context,
-              state: state,
-              child: const ForgotPasswordScreen(),
-            ),
-      ),
-      GoRoute(
-        name: AppRoute.homeScreen,
-        path: '/${AppRoute.homeScreen}',
-        pageBuilder:
-            (context, state) => buildPageWithFadeTransition<void>(
-              context: context,
-              state: state,
-              child: const HomePage(),
-            ),
-      ),
-        GoRoute(
-        name: AppRoute.splashScreen,
-        path: '/${AppRoute.splashScreen}',
-        pageBuilder:
-            (context, state) => buildPageWithFadeTransition<void>(
-              context: context,
-              state: state,
-              child: const SplashScreen(),
-            ),
-      ),
-    ],
-    errorPageBuilder: (context, state) {
-      return const MaterialPage(child: ErrorPage());
-    },
-  );
-
-  static void clearAndNavigate(BuildContext context, String name) {
-    while (context.canPop()) {
-      context.pop();
-    }
-    context.pushReplacementNamed(name);
-  }
-}
-
-class AppRoute {
-  static const String errorPage = 'error-page';
-  static const String signupScreen = "Signup_screen";
-  static const String loginScreen = "Login_screen";
-  static const String forgotpasswordScreen = "Forgot_Password_screen";
-  static const String homeScreen = "home_screen";
-  static const String splashScreen = "spalsh_screen";
+Route<dynamic> onGenRoute(RouteSettings settings) {
+  return switch (settings.name) {
+    HomePage.route => buildPageWithSlideTransition(child: HomePage()),
+    AboutPage.route => buildPageWithSlideTransition(child: AboutPage()),
+    SettingPage.route => buildPageWithSlideTransition(child: SettingPage()),
+    SignUpScreen.route => buildPageWithSlideTransition(child: SignUpScreen()),
+    LoginScreen.route => buildPageWithSlideTransition(child: LoginScreen()),
+    ForgotPasswordScreen.route => buildPageWithSlideTransition(child: ForgotPasswordScreen()),
+    SplashScreen.route => buildPageWithSlideTransition(child: SplashScreen()),
+    _ => MaterialPageRoute(builder: (_) => const ErrorPage()),
+  };
 }

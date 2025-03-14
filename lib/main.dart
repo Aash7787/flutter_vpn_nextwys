@@ -14,25 +14,35 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      minTextAdapt: true,
-      splitScreenMode: true,
-      designSize: const Size(375, 812),
-      builder: (context, child) {
-        return SafeArea(
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.instance.lightTheme,
-              routerDelegate: MyAppRouter.router.routerDelegate,
-              routeInformationParser: MyAppRouter.router.routeInformationParser,
-              routeInformationProvider:
-                  MyAppRouter.router.routeInformationProvider,
-            ),
-          ),
-        );
-      },
+// <<<<<<< bkr
+//     return ScreenUtilInit(
+//       minTextAdapt: true,
+//       splitScreenMode: true,
+//       designSize: const Size(375, 812),
+//       builder: (context, child) {
+//         return SafeArea(
+//           child: MaterialApp(
+//             debugShowCheckedModeBanner: false,
+//             home: MaterialApp.router(
+//               debugShowCheckedModeBanner: false,
+//               theme: AppTheme.instance.lightTheme,
+//               routerDelegate: MyAppRouter.router.routerDelegate,
+//               routeInformationParser: MyAppRouter.router.routeInformationParser,
+//               routeInformationProvider:
+//                   MyAppRouter.router.routeInformationProvider,
+//             ),
+//           ),
+//         );
+//       },
+// =======
+    return MaterialApp(
+      title: 'Flutter Demo',
+      themeMode: ThemeMode.light,
+      theme: AppTheme.instance.lightTheme, // Light Theme
+      darkTheme: AppTheme.instance.darkTheme, // Dark Theme
+      onGenerateRoute: onGenRoute,
+      initialRoute: HomePage.route,
+// >>>>>>> master
     );
   }
 }
