@@ -3,6 +3,7 @@ import 'package:flutter_vpn/src/features/auth/signup/pages/forgot_password_scree
 import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/sign_up_screen.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/splash_screen.dart';
+import 'package:flutter_vpn/src/features/home/page/country_pick_page.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
 import 'package:flutter_vpn/src/features/home/page/about_page.dart';
 import 'package:flutter_vpn/src/features/home/page/setting_page.dart';
@@ -18,6 +19,7 @@ Route<dynamic> onGenRoute(RouteSettings settings) {
     LoginScreen.route => buildPageWithDefaultTransition(child: LoginScreen()),
     ForgotPasswordScreen.route => buildPageWithDefaultTransition(child: ForgotPasswordScreen()),
     SplashScreen.route => buildPageWithDefaultTransition(child: SplashScreen()),
+    CountryPickPage.route => buildPageWithDefaultTransition(child: CountryPickPage()),
     _ => MaterialPageRoute(builder: (_) => const ErrorPage()),
   };
 }
