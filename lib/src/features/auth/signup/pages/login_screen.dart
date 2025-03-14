@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/forgot_password_screen.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/custom_elevated_button.dart';
 import '../../../../common/widgets/text_widget.dart';
@@ -114,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.centerRight,
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(ForgotPasswordScreen.route);
+                  Navigator.pushNamed(context,ForgotPasswordScreen.route);
                 },
                 child: TextWidget(
                   text: "Forgot Password?",
@@ -164,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(LoginScreen.route);
+                  Navigator.pushNamed(context,LoginScreen.route);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

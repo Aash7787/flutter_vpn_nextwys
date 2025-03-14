@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
-import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,9 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(Duration(seconds: 3), () {
       if (uid != null && uid.isNotEmpty) {
-        context.pushNamed(HomePage.route); // Go to Home if logged in
+        Navigator.pushNamed(context, HomePage.route); // Go to Home if logged in
       } else {
-        context.pushNamed(LoginScreen.route); // Go to Login if not logged in
+        Navigator.pushNamed(
+          context,
+          LoginScreen.route,
+        ); // Go to Login if not logged in
       }
     });
   }

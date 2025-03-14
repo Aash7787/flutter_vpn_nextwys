@@ -5,7 +5,6 @@ import 'package:flutter_vpn/src/common/widgets/text_widget.dart';
 import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
-import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -195,7 +194,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onTap: () async {
                     var user = await AuthController().signInWithGoogle();
                     if (user != null) {
-                      context.pushNamed(
+                      Navigator.pushNamed(context,
                         HomePage.route,
                       ); // Navigate to home screen
                     }
@@ -225,7 +224,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(LoginScreen.route);
+                  Navigator.pushNamed(context,LoginScreen.route);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

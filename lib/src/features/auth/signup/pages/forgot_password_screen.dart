@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/sign_up_screen.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/custom_elevated_button.dart';
 import '../../../../common/widgets/text_widget.dart';
@@ -93,7 +92,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(SignUpScreen.route);
+                  Navigator.pushNamed(context, SignUpScreen.route);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
