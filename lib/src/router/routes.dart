@@ -11,13 +11,13 @@ import 'package:flutter_vpn/src/router/route_transition.dart';
 
 Route<dynamic> onGenRoute(RouteSettings settings) {
   return switch (settings.name) {
-    HomePage.route => buildPageWithSlideTransition(child: HomePage()),
-    AboutPage.route => buildPageWithSlideTransition(child: AboutPage()),
-    SettingPage.route => buildPageWithSlideTransition(child: SettingPage()),
-    SignUpScreen.route => buildPageWithSlideTransition(child: SignUpScreen()),
-    LoginScreen.route => buildPageWithSlideTransition(child: LoginScreen()),
-    ForgotPasswordScreen.route => buildPageWithSlideTransition(child: ForgotPasswordScreen()),
-    SplashScreen.route => buildPageWithSlideTransition(child: SplashScreen()),
+    HomePage.route => buildPageWithDefaultTransition(child: HomePage()),
+    AboutPage.route => buildPageWithDefaultTransition(child: AboutPage()),
+    SettingPage.route => buildPageWithDefaultTransition(child: SettingPage()),
+    SignUpScreen.route => buildPageWithDefaultTransition(child: SignUpScreen()),
+    LoginScreen.route => buildPageWithDefaultTransition(child: LoginScreen()),
+    ForgotPasswordScreen.route => buildPageWithDefaultTransition(child: ForgotPasswordScreen()),
+    SplashScreen.route => buildPageWithDefaultTransition(child: SplashScreen()),
     _ => MaterialPageRoute(builder: (_) => const ErrorPage()),
   };
 }

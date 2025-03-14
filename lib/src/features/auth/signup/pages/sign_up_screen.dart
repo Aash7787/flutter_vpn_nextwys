@@ -1,16 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vpn/src/common/widgets/custom_elevated_button.dart';
 import 'package:flutter_vpn/src/common/widgets/text_widget.dart';
 import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
-import 'package:flutter_vpn/src/router/routes.dart';
+import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
+import 'package:flutter_vpn/src/features/home/page/home_page.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+  static const route = 'sign/up/screen';
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -197,7 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     var user = await AuthController().signInWithGoogle();
                     if (user != null) {
                       context.pushNamed(
-                        AppRoute.homeScreen,
+                        HomePage.route,
                       ); // Navigate to home screen
                     }
                   },
@@ -226,7 +225,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(AppRoute.loginScreen);
+                  context.pushNamed(LoginScreen.route);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

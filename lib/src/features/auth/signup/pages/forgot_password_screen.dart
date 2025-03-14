@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_vpn/src/features/auth/signup/pages/sign_up_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/custom_elevated_button.dart';
 import '../../../../common/widgets/text_widget.dart';
-import '../../../../router/routes.dart';
 import '../controller/auth_controller.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
+
+  static const route = 'forgot/password/screen';
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
@@ -92,7 +93,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(AppRoute.signupScreen);
+                  context.pushNamed(SignUpScreen.route);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

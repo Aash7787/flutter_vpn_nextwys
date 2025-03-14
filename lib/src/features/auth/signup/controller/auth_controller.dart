@@ -1,10 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_vpn/src/router/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
+import 'package:flutter_vpn/src/features/home/page/home_page.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AuthController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -37,9 +38,9 @@ class AuthController {
       });
 
       // Store login status
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString("uid", uid);
-      await prefs.setBool("isLoggedIn", true);
+      SharedPreferences prefers = await SharedPreferences.getInstance();
+      await prefers.setString("uid", uid);
+      await prefers.setBool("isLoggedIn", true);
 
       context.go('/home'); // Navigate to Home
     } catch (e) {
@@ -112,7 +113,7 @@ class AuthController {
     await prefs.clear(); // Clears all stored data
     await _auth.signOut();
 
-    context.pushNamed(AppRoute.loginScreen);
+    context.pushNamed(LoginScreen.route);
   }
 
   // Check if user is already logged in (For Splash Screen)
@@ -121,9 +122,9 @@ class AuthController {
     bool? isLoggedIn = prefs.getBool("isLoggedIn");
 
     if (isLoggedIn == true) {
-      context.pushNamed(AppRoute.homeScreen);
+      context.pushNamed(HomePage.route);
     } else {
-      context.pushNamed(AppRoute.loginScreen);
+      context.pushNamed(LoginScreen.route);
     }
   }
 

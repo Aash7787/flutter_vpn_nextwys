@@ -1,17 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
-import 'package:flutter_vpn/src/router/routes.dart';
+import 'package:flutter_vpn/src/features/auth/signup/pages/forgot_password_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../common/widgets/custom_elevated_button.dart';
 import '../../../../common/widgets/text_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  static const route = 'login/screen';
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -22,8 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   bool _isSecure = true;
   String email = "", password = "";
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.centerRight,
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(AppRoute.forgotpasswordScreen);
+                  context.pushNamed(ForgotPasswordScreen.route);
                 },
                 child: TextWidget(
                   text: "Forgot Password?",
@@ -167,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.pushNamed(AppRoute.signupScreen);
+                  context.pushNamed(LoginScreen.route);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
