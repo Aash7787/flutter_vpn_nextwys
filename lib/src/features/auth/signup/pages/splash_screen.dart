@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
+import 'package:flutter_vpn/src/features/auth/login/login_screen.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

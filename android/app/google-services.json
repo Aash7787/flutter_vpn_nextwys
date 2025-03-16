@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "506745316875",
+    "project_id": "vpn-nextwys",
+    "storage_bucket": "vpn-nextwys.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506745316875:android:a30414f7b01e424bc5c90e",
+        "android_client_info": {
+          "package_name": "com.example.flutter_vpn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTFvmORLaKoVK-RA98mzNWv11i1-YcsgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

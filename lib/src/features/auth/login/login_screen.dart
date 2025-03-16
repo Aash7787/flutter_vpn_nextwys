@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
 import 'package:flutter_vpn/src/features/auth/signup/pages/forgot_password_screen.dart';
 
-import '../../../../common/widgets/custom_elevated_button.dart';
-import '../../../../common/widgets/text_widget.dart';
+import '../../../common/widgets/custom_elevated_button.dart';
+import '../../../common/widgets/text_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

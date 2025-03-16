@@ -17,10 +17,11 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(title: 'Setting',),
+        appBar: CustomAppBar(title: 'Setting'),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,6 +63,7 @@ class _SettingPageState extends State<SettingPage> {
                 ],
               ),
               Text(
+                textAlign: TextAlign.start,
                 'If you can not visit Google on your region, please enable it.',
                 style: TextStyle(color: Colors.blue),
               ),

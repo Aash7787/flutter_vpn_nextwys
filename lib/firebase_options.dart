@@ -17,17 +17,29 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,49 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDV7HwwJwWAhMLZ9CXaa8kh1jdLfzqDUOQ',
-    appId: '1:268279654932:web:e30fc6ae12e3a8688a5501',
-    messagingSenderId: '268279654932',
-    projectId: 'vpnnextways',
-    authDomain: 'vpnnextways.firebaseapp.com',
-    storageBucket: 'vpnnextways.firebasestorage.app',
-    measurementId: 'G-VPWGKYYJBC',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCpuWsQ1j1n_cmGU868Gq1185PrWmV7sFM',
-    appId: '1:268279654932:android:1f0abdadba900fcc8a5501',
-    messagingSenderId: '268279654932',
-    projectId: 'vpnnextways',
-    storageBucket: 'vpnnextways.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDfxoaS9MVFXdl32EshRvZMF-pwOXtL9ck',
-    appId: '1:268279654932:ios:eefd0d789533b77f8a5501',
-    messagingSenderId: '268279654932',
-    projectId: 'vpnnextways',
-    storageBucket: 'vpnnextways.firebasestorage.app',
-    iosBundleId: 'com.example.flutterVpn',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDfxoaS9MVFXdl32EshRvZMF-pwOXtL9ck',
-    appId: '1:268279654932:ios:eefd0d789533b77f8a5501',
-    messagingSenderId: '268279654932',
-    projectId: 'vpnnextways',
-    storageBucket: 'vpnnextways.firebasestorage.app',
-    iosBundleId: 'com.example.flutterVpn',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDV7HwwJwWAhMLZ9CXaa8kh1jdLfzqDUOQ',
-    appId: '1:268279654932:web:96c234f6222710478a5501',
-    messagingSenderId: '268279654932',
-    projectId: 'vpnnextways',
-    authDomain: 'vpnnextways.firebaseapp.com',
-    storageBucket: 'vpnnextways.firebasestorage.app',
-    measurementId: 'G-M5W6GGP817',
+    apiKey: 'AIzaSyBTFvmORLaKoVK-RA98mzNWv11i1-YcsgA',
+    appId: '1:506745316875:android:a30414f7b01e424bc5c90e',
+    messagingSenderId: '506745316875',
+    projectId: 'vpn-nextwys',
+    storageBucket: 'vpn-nextwys.firebasestorage.app',
   );
 }

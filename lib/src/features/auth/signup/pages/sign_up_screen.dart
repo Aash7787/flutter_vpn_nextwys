@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vpn/src/common/widgets/custom_elevated_button.dart';
 import 'package:flutter_vpn/src/common/widgets/text_widget.dart';
 import 'package:flutter_vpn/src/features/auth/signup/controller/auth_controller.dart';
-import 'package:flutter_vpn/src/features/auth/signup/pages/login_screen.dart';
+import 'package:flutter_vpn/src/features/auth/login/login_screen.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
 
 class SignUpScreen extends StatefulWidget {
