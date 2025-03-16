@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vpn/src/common/image_url/image_url.dart';
 import 'package:flutter_vpn/src/features/home/page/home_page.dart';
@@ -23,6 +24,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Image.asset(OtherImagesUrl.vpn)));
+    return Scaffold(
+      body: Center(
+        child: Stack(
+          children: [
+            Center(child: Image.asset(OtherImagesUrl.vpn)),
+            Center(child: CupertinoActivityIndicator()),
+          ],
+        ),
+      ),
+    );
   }
 }

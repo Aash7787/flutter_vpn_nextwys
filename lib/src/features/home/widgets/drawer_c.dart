@@ -16,16 +16,24 @@ class DrawerC extends StatefulWidget {
 
 class _DrawerCState extends State<DrawerC> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-
   User? user;
 
+  // Listen to auth state changes to update user state automatically.
+  @override
+  void initState() {
+    super.initState();
+    // Get the initial user from FirebaseAuth
+    user = _auth.currentUser;
+    _auth.authStateChanges().listen((User? newUser) {
+      setState(() {
+        user = newUser;
+      });
+      log("Auth state changed: $newUser");
+    });
+  }
+
   Future<User?> _signInWithGoogle() async {
-    // Sha1 key AA:7B:97:5F:99:8D:11:71:E7:B1:B3:2F:86:DB:5C:08:42:EF:23:34
-
-    // project : project-506745316875
-
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) return null; // User canceled sign-in
@@ -47,7 +55,7 @@ class _DrawerCState extends State<DrawerC> {
       log('Error signing in with Google: $e');
       if (!mounted) return null;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Check your connection and try again')),
+        const SnackBar(content: Text('Check your connection and try again')),
       );
       return null;
     }
@@ -55,56 +63,62 @@ class _DrawerCState extends State<DrawerC> {
 
   Future<bool> signOutFromGoogle() async {
     try {
-      await FirebaseAuth.instance.signOut();
+      await _auth.signOut();
+      await _googleSignIn.signOut();
       return true;
-    } on Exception catch (_) {
+    } catch (e) {
+      log('Error signing out: $e');
       return false;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    log('$user');
+    log('Current user: $user');
     return Drawer(
-      backgroundColor: Color.fromRGBO(255, 255, 255, 0.8), // 80% transparency
-
+      backgroundColor: const Color.fromRGBO(
+        255,
+        255,
+        255,
+        0.8,
+      ), // 80% transparency
       child: Column(
         children: [
-          // Custom "AppBar" in the Drawer
+          // Custom header in the Drawer
           Container(
             color: Colors.blue,
-            padding: EdgeInsets.only(top: 30, bottom: 30),
+            padding: const EdgeInsets.only(top: 30, bottom: 30),
             child: Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-
                 children: [
                   Row(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 30,
                         backgroundColor: Colors.white,
                         child: Icon(Icons.person, size: 40, color: Colors.blue),
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
                       GestureDetector(
                         onTap: () async {
-                          user = await _signInWithGoogle();
-                          if (user != null) {
-                            log('$user');
+                          final signedInUser = await _signInWithGoogle();
+                          if (signedInUser != null) {
+                            // No need to manually update 'user' here because
+                            // the authStateChanges listener will update it.
                             if (!context.mounted) return;
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Signed in as: ${user?.displayName ?? 'Guest'}',
+                                  'Signed in as: ${signedInUser.displayName ?? 'Guest'}',
                                 ),
                               ),
                             );
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 15,
                             vertical: 5,
                           ),
@@ -119,8 +133,8 @@ class _DrawerCState extends State<DrawerC> {
                                 "assets/images/google.jpg",
                                 height: 20,
                               ),
-                              SizedBox(width: 5),
-                              Text(
+                              const SizedBox(width: 5),
+                              const Text(
                                 "Sign in",
                                 style: TextStyle(
                                   fontSize: 16,
@@ -131,16 +145,30 @@ class _DrawerCState extends State<DrawerC> {
                           ),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
-                        onPressed: signOutFromGoogle,
-                        icon: Icon(Icons.logout),
+                        onPressed: () async {
+                          final result = await signOutFromGoogle();
+                          if (result) {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Signed out successfully'),
+                              ),
+                            );
+                          } else {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Sign out failed')),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.logout),
                       ),
-                      // Using Expanded to avoid infinite width issue
                     ],
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "Unstable connection? Click here",
                     style: TextStyle(
                       color: Colors.white,
@@ -148,42 +176,52 @@ class _DrawerCState extends State<DrawerC> {
                     ),
                     textAlign: TextAlign.start,
                   ),
+                  const SizedBox(height: 10),
+                  // The welcome text now always reflects the persisted user state
+                  Text(
+                    'Welcome ${user?.displayName ?? 'Guest'}',
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.2,
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-
           // Drawer Menu Items
           ListTile(
-            leading: Icon(Icons.bolt, color: Colors.blue),
-            title: Text("Smart proxy", style: TextStyle(fontSize: 16)),
+            leading: const Icon(Icons.bolt, color: Colors.blue),
+            title: const Text("Smart proxy", style: TextStyle(fontSize: 16)),
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(Icons.share, color: Colors.blue),
-            title: Text("Share", style: TextStyle(fontSize: 16)),
+            leading: const Icon(Icons.share, color: Colors.blue),
+            title: const Text("Share", style: TextStyle(fontSize: 16)),
             onTap: () {
               Share.share('https://flutter.dev/');
             },
           ),
           ListTile(
-            leading: Icon(Icons.star, color: Colors.blue),
-            title: Text("Rate us", style: TextStyle(fontSize: 16)),
+            leading: const Icon(Icons.star, color: Colors.blue),
+            title: const Text("Rate us", style: TextStyle(fontSize: 16)),
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(Icons.question_answer, color: Colors.blue),
-            title: Text("FAQ", style: TextStyle(fontSize: 16)),
+            leading: const Icon(Icons.question_answer, color: Colors.blue),
+            title: const Text("FAQ", style: TextStyle(fontSize: 16)),
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(Icons.settings, color: Colors.blue),
-            title: Text("Settings", style: TextStyle(fontSize: 16)),
+            leading: const Icon(Icons.settings, color: Colors.blue),
+            title: const Text("Settings", style: TextStyle(fontSize: 16)),
             onTap: () => Navigator.pushNamed(context, SettingPage.route),
           ),
           ListTile(
-            leading: Icon(Icons.info, color: Colors.blue),
-            title: Text("About", style: TextStyle(fontSize: 16)),
+            leading: const Icon(Icons.info, color: Colors.blue),
+            title: const Text("About", style: TextStyle(fontSize: 16)),
             onTap: () => Navigator.pushNamed(context, AboutPage.route),
           ),
         ],
